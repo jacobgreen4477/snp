@@ -47,7 +47,7 @@ def seed_everything(seed):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = True
 
-def train_lgb(train,test,params,stratified,num_folds,drop_features,seed_num,TARGET,vi):
+def model_lgb(train,test,params,stratified,num_folds,drop_features,seed_num,TARGET,vi):
     
     # start log 
     print('-'*50)

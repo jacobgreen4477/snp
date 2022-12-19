@@ -164,11 +164,11 @@ def train_lgb(train,test,params,stratified,num_folds,drop_features,seed_num,TARG
     print('>> Full F1 score %.6f' % oof_f1)    
         
     # confusion matrix
-    if vi==True:
-        display(pd.crosstab(train_df['class'],train_df['oof']))
+    display(pd.crosstab(train_df['class'],train_df['oof']))
 
     # vi
-    display(feature_importance_df.groupby(['feature'])['importance'].sum().sort_values(ascending=False).head(10))
+    if vi==True:
+        display(feature_importance_df.groupby(['feature'])['importance'].sum().sort_values(ascending=False).head(10))
 
     # save 
     test_df[['id','class']].to_csv('sub_'+str(np.round(oof_eval,8))+'.csv',index=False)

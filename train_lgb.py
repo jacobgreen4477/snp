@@ -47,7 +47,7 @@ def seed_everything(seed):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = True
 
-def train_lgb(train,test,params,stratified,num_folds,drop_features,seed_num,TARGET):
+def train_lgb(train,test,params,stratified,num_folds,drop_features,seed_num,TARGET,vi):
     
     # start log 
     print('-'*50)
@@ -164,7 +164,8 @@ def train_lgb(train,test,params,stratified,num_folds,drop_features,seed_num,TARG
     print('>> Full F1 score %.6f' % oof_f1)    
         
     # confusion matrix
-    display(pd.crosstab(train_df['class'],train_df['oof']))
+    if vi==True:
+        display(pd.crosstab(train_df['class'],train_df['oof']))
 
     # vi
     display(feature_importance_df.groupby(['feature'])['importance'].sum().sort_values(ascending=False).head(10))

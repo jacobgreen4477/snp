@@ -38,6 +38,61 @@ import random
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
+
+# """
+# tune model  
+# """
+
+# TARGET = 'class'
+
+# drop_features = ['id','father','mother','gender']
+
+# params =  {
+#     'learning_rate': 0.07398,
+#     'max_depth': 4.309,
+#     'colsample_bytree': 0.4028,
+#     'subsample': 0.4278,
+#     'min_child_samples': 25.65,
+#     'min_child_weight': 0.6138,
+#     'min_split_gain': 0.7354,
+#     'num_leaves': 62.68,
+#     'reg_alpha': 0.2889,
+#     'reg_lambda': 7.875
+# }
+
+ 
+# opt_params = {
+#     'learning_rate': (0.02, 0.08),
+#     'num_leaves': (24, 80),
+#     'colsample_bytree': (0.2, 0.8),
+#     'subsample': (0.2, 0.8),
+#     'max_depth': (3, 8),
+#     'reg_alpha': (0.01, 10),
+#     'reg_lambda': (1, 10),
+#     'min_split_gain': (0.01, 1),
+#     'min_child_weight': (0.001,1),  
+#     'min_child_samples':(10, 50)
+# }
+    
+# # tune
+# opt_params, lgbBO = bayes_parameter_opt_lgb(
+#     train, 
+#     params,
+#     opt_params, 
+#     init_round=10, 
+#     opt_round=10, 
+#     n_folds=5, 
+#     seed_num=42, 
+#     drop_features=drop_features,
+#     TARGET = TARGET
+# )
+
+# # check 
+# print(opt_params[1])
+    
+# # re-train ml with the best one
+# train_df,test_df = train_model(train,test,opt_params[1],True,5,drop_features,42,TARGET)
+
 def lgb_eval(**params):
     
     stratified = True
